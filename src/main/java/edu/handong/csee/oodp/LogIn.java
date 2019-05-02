@@ -27,7 +27,7 @@ public class LogIn extends JFrame{
 	LogIn(){
 		setTitle("Login");
 		setSize(400, 200);
-//		setResizable(false);
+
 		setLocation(750, 450);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
@@ -83,6 +83,7 @@ public class LogIn extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new SignUp();
+				dispose();
 //				setVisible(true);
 			}
 		});
