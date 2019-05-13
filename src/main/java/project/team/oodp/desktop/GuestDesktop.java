@@ -123,7 +123,7 @@ public class GuestDesktop extends Desktop{
 				
 				JPanel folder_panel = new JPanel();
 				add(folder_panel);
-				placeCreateFolderPanel(folder_panel,center_panel);
+				placeCreateFolderPanel(folder_panel);
 				
 				add(folder_panel);
 				
@@ -166,7 +166,7 @@ public class GuestDesktop extends Desktop{
 				JPanel folder_panel = new JPanel();
 				add(folder_panel);
 				
-				placeDeleteFolderPanel(folder_panel,center_panel);
+				placeDeleteFolderPanel(folder_panel);
 				
 				add(folder_panel);
 				
@@ -178,7 +178,7 @@ public class GuestDesktop extends Desktop{
 	}
 	
 	
-	private void placeCreateFolderPanel(JPanel folder_panel,JPanel center_panel) {
+	private void placeCreateFolderPanel(JPanel folder_panel) {
 	    JTextField folder_name_txt;
 	    
 		folder_panel.setLayout(null);
@@ -216,7 +216,7 @@ public class GuestDesktop extends Desktop{
 		
 	}
 
-	private void placeDeleteFolderPanel(JPanel folder_panel,JPanel center_panel) {
+	private void placeDeleteFolderPanel(JPanel folder_panel) {
 		JTextField folder_name_txt;
 	    
 		folder_panel.setLayout(null);
