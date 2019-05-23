@@ -10,7 +10,7 @@ public class DesktopTree {
 		this.parent = parent;
 		children = new ArrayList<DesktopTree>();
 		segments = new ArrayList<DSegment>();
-	}
+	} 
 	DesktopTree() {
 		this(null);
 	}
