@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import project.team.oodp.desktop.clocks.SuperClock;
 import project.team.oodp.desktop.login.SuperLogInFactory;
 
 public class GuestDesktop extends Desktop{
@@ -27,8 +28,6 @@ public class GuestDesktop extends Desktop{
 	JLabel empty1, empty2, empty3, empty4, empty5, empty6;
 	JButton create_folder, delete_folder, create_file, delete_file;
 	
-	//수정 
-	//FileManager fm = new FileManager();
 	JButton[] folder_btn = new JButton[30];
 	static int number_of_folder = 0;
 	static ArrayList<String> folder_name = new ArrayList<String>();
@@ -36,26 +35,16 @@ public class GuestDesktop extends Desktop{
 	
 	public GuestDesktop() throws IOException{
 		
-//		JFrame jf = new JFrame("Welcome to Desktop Manager :)");
-		
-		
-//		jf.setLayout(new BorderLayout());
 		setTitle("Welcome to Desktop Manager :)");
 		setSize(1000,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setVisible(true);
-//		add(jf);
 		
 		setLayout(new BorderLayout());
 		center_panel = new JPanel();
 		center_panel.setBackground(new Color(0, 128, 128));
-//		BufferedImage img = ImageIO.read(new 0File("D:/HGU_2019_1/객체지향/Desktop_images/window.jpg"));
-//		JLabel lbl = new JLabel(new ImageIcon(img));
-//		center_panel.add(lbl);
-		
 		side_panel = new JPanel();
-//		side_panel.setLayout(new GridLayout(1,6));
 		side_panel.setSize(100,100);
 		side_panel.setBackground(Color.yellow);
 		create_folder = new JButton("Create Folder");
@@ -114,7 +103,10 @@ public class GuestDesktop extends Desktop{
 		create_folder.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				center_panel.setVisible(false);side_panel.setVisible(false);bottom_panel.setVisible(false);
+				center_panel.setVisible(false);
+				side_panel.setVisible(false);
+				bottom_panel.setVisible(false);
+				
 				setTitle("Create Folder");
 				setSize(400, 200);
 				
@@ -129,7 +121,6 @@ public class GuestDesktop extends Desktop{
 				
 				setVisible(true);
 				
-				//dispose();
 			}
 
 		});

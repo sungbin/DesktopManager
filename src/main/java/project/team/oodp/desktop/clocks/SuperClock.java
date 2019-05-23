@@ -1,4 +1,4 @@
-package project.team.oodp.desktop;
+package project.team.oodp.desktop.clocks;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,7 +10,7 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-class SuperClock extends JLabel implements ActionListener,Clock{
+public class SuperClock extends JLabel implements ActionListener,Clock{
 	
 	SimpleDateFormat sdf;
 	

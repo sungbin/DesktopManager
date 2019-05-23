@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import project.team.oodp.desktop.clocks.SuperClock;
 import project.team.oodp.desktop.login.SuperLogInFactory;
 
 public class UserDesktop extends Desktop{
