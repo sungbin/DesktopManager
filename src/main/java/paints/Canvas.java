@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 public class Canvas extends JPanel {
 	Memory memory = new Memory();
 	Sketch sketch = new Sketch();
-//asdasddaasd
+//asdasddaasdsadasdad
 	Line2D.Double line;
 	Rectangle2D.Double rectangle;
 	Ellipse2D.Double elipse;
