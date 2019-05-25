@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,7 +34,7 @@ public class UserDesktop extends Desktop{
 	JButton window_btn, paint_btn,watch_btn;
 	JLabel empty1, empty2, empty3, empty4, empty5, empty6;
 	JButton create_folder, delete_folder, create_file, delete_file;
-	
+	JButton clock_btn;
 	//수정 
 	//FileManager fm = new FileManager();
 	JButton[] folder_btn = new JButton[30];
@@ -57,12 +58,8 @@ public class UserDesktop extends Desktop{
 		setLayout(new BorderLayout());
 		center_panel = new JPanel();
 		center_panel.setBackground(new Color(0, 128, 128));
-//		BufferedImage img = ImageIO.read(new 0File("D:/HGU_2019_1/객체지향/Desktop_images/window.jpg"));
-//		JLabel lbl = new JLabel(new ImageIcon(img));
-//		center_panel.add(lbl);
-		
+
 		side_panel = new JPanel();
-//		side_panel.setLayout(new GridLayout(1,6));
 		side_panel.setSize(100,100);
 		side_panel.setBackground(Color.yellow);
 		create_folder = new JButton("Create Folder");
@@ -96,14 +93,67 @@ public class UserDesktop extends Desktop{
 		empty4 = new JLabel();
 		empty5 = new JLabel();
 		empty6 = new JLabel();
+		
+		clock_btn = new JButton("Clock");
+		
+		clock_btn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				CheckColor cc = new CheckColor();  //Strategy Pattern
+			}
+			
+		});
+		
+		
+		clock_btn.setBackground(new java.awt.Color(248,248,248));
+		create_folder.setBackground(new java.awt.Color(248,248,248));
+		delete_folder.setBackground(new java.awt.Color(248,248,248));
 
 		bottom_panel.add(create_folder);
 		bottom_panel.add(delete_folder);
+		bottom_panel.add(clock_btn);
 		
 		JPanel clock_panel = new JPanel();
 		SuperClock time = new SuperClock();
 	      
-	      clock_panel.add(time);
+	    clock_panel.add(time);
+	      
+	    clock_panel.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+	    	
+	    });  
 	      
 		bottom_panel.add(clock_panel);      
 		
@@ -111,7 +161,7 @@ public class UserDesktop extends Desktop{
 		
 		side_panel = new JPanel();
 		
-//		add(side_panel, "We");
+
 		add(center_panel, "Center");
 		add(bottom_panel, "South");
 		
