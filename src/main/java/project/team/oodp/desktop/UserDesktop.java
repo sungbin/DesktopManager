@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import paints.Frame;
 import project.team.oodp.desktop.clocks.SuperClock;
 import project.team.oodp.desktop.folderColor.FolderColor;
 import project.team.oodp.desktop.folderColor.RedFolder;
@@ -28,7 +30,7 @@ public class UserDesktop extends Desktop{
 	
 	
 	JPanel whole_panel, center_panel, bottom_panel, side_panel;
-	JButton window_btn;
+	JButton window_btn, paint_btn,watch_btn;
 	JLabel empty1, empty2, empty3, empty4, empty5, empty6;
 	JButton create_folder, delete_folder, create_file, delete_file;
 	
@@ -139,11 +141,48 @@ public class UserDesktop extends Desktop{
 
 		});
 		
+		//어플리케이션 생성하는 부분 
+		center_panel.setLayout(null);
+		JLabel paint_name = new JLabel("Paint");
+		paint_name.setBounds(100, 690, 80, 20);
+		center_panel.add(paint_name);
+		
+		paint_btn = new JButton();
+		paint_btn.setBackground(Color.white);
+		paint_btn.setBounds(80, 690, 80, 20);
+		center_panel.add(paint_btn);
+		
+		
+		
+		paint_btn.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				center_panel.setVisible(false);side_panel.setVisible(false);bottom_panel.setVisible(false);
+				Frame fram = new Frame();
+				fram.main(null);
+			}
+
+		});
+		
+		JLabel watch_name = new JLabel("Watch");
+		watch_name.setBounds(220, 690, 80, 20);
+		center_panel.add(watch_name);
+		
+		watch_btn = new JButton();
+		watch_btn.setBackground(Color.white);
+		watch_btn.setBounds(200, 690, 80, 20);
+		center_panel.add(watch_btn);
+		
+		
 		//폴더를 생성하는 부분 
 		FolderColor yellow = new YellowFolder();
 		FolderColor red = new RedFolder();
+		Iterator<String> itr = folder_name.iterator();
 		
+
 				if(number_of_folder > 0) {
+					int folder_pointer = 0;
+					int folder_pointer2 = 0;
 					center_panel.setLayout(null);
 					for (int i = 0; i < number_of_folder; i++) {
 						folder_btn[i] = new JButton();
@@ -152,12 +191,19 @@ public class UserDesktop extends Desktop{
 						}else {
 							folder_btn[i].setBackground(red.setFolderColor());
 						}
-						folder_btn[i].setBounds(80, 100+120*i, 80, 80);
+						folder_btn[i].setBounds(80+folder_pointer, 100+150*folder_pointer2, 80, 80);
 						center_panel.add(folder_btn[i]);
 						
 						JLabel name = new JLabel(folder_name.get(i));
-						name.setBounds(100, 150+120*i, 80, 80);
+						name.setBounds(100+folder_pointer, 150+150*folder_pointer2, 80, 80);
 						center_panel.add(name);
+						
+						folder_pointer2++;
+						
+						if((i+1) % 4 == 0) {
+							folder_pointer += 140;
+							folder_pointer2 = 0;
+						}
 					  }
 				}
 				

@@ -9,7 +9,7 @@ public class Frame extends JFrame {
 	MenuBar menubar = new MenuBar();
 	ToolBar toolbar = new ToolBar();
 	Canvas canvas = new Canvas();
-	Frame() {
+	public Frame() {
 		setTitle("그림판");
 		setSize(1440,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
