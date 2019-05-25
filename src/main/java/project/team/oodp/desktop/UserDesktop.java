@@ -19,6 +19,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import project.team.oodp.desktop.clocks.SuperClock;
+import project.team.oodp.desktop.folderColor.FolderColor;
+import project.team.oodp.desktop.folderColor.RedFolder;
+import project.team.oodp.desktop.folderColor.YellowFolder;
 import project.team.oodp.desktop.login.SuperLogInFactory;
 
 public class UserDesktop extends Desktop{
@@ -137,11 +140,18 @@ public class UserDesktop extends Desktop{
 		});
 		
 		//폴더를 생성하는 부분 
+		FolderColor yellow = new YellowFolder();
+		FolderColor red = new RedFolder();
+		
 				if(number_of_folder > 0) {
 					center_panel.setLayout(null);
 					for (int i = 0; i < number_of_folder; i++) {
 						folder_btn[i] = new JButton();
-						folder_btn[i].setBackground(Color.yellow);
+						if(i%2 == 0) {
+							folder_btn[i].setBackground(yellow.setFolderColor());
+						}else {
+							folder_btn[i].setBackground(red.setFolderColor());
+						}
 						folder_btn[i].setBounds(80, 100+120*i, 80, 80);
 						center_panel.add(folder_btn[i]);
 						
