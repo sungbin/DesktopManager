@@ -20,7 +20,7 @@ public class ToolBar extends JToolBar{
 		addSeparator();
 		
 		for (int i = 0; i < buttons.drawbuttons.length; i++)
-			add(buttons.drawbuttons[i]);
+			add(buttons.drawbuttons[i].getButton());
 		
 		addSeparator();
 		add(buttons.toolbuttons[3]);

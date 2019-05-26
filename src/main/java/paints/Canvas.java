@@ -42,7 +42,7 @@ public class Canvas extends JPanel {
 
 		public void mousePressed(MouseEvent e) {
 
-			if(Buttons.erase == true || Buttons.draw[0] == true) {
+			if(Buttons.erase == true || Buttons.drawbuttons[0].getOn() == true) {
 				ColorFrame.colorChange = false;
 				start = e.getPoint();
 				sketch.sketch.add(start);
@@ -50,17 +50,17 @@ public class Canvas extends JPanel {
 				sketch.start.add(sketch.sketch.size()-1);
 			}
 
-			if(Buttons.draw[1] == true) {
+			if(Buttons.drawbuttons[1].getOn() == true) {
 				ColorFrame.colorChange = false;
 				start = e.getPoint();
 			}
 
-			if(Buttons.draw[2] == true) {
+			if(Buttons.drawbuttons[2].getOn() == true) {
 				ColorFrame.colorChange = false;
 				start = e.getPoint();
 			}
 
-			if(Buttons.draw[3] == true) {
+			if(Buttons.drawbuttons[3].getOn() == true) {
 				ColorFrame.colorChange = false;
 				start = e.getPoint();
 			}
@@ -69,25 +69,25 @@ public class Canvas extends JPanel {
 
 		public void mouseDragged(MouseEvent e) {
 
-			if(Buttons.erase == true || Buttons.draw[0]  == true) {
+			if(Buttons.erase == true || Buttons.drawbuttons[0].getOn()  == true) {
 				end = e.getPoint();
 				sketch.sketch.add(end);
 				repaint();
 			}
 
-			if (Buttons.draw[1] == true) {
+			if (Buttons.drawbuttons[1].getOn() == true) {
 				end = e.getPoint();
 				line = new Line2D.Double(start.x, start.y, end.x, end.y);
 				repaint();
 			}
 
-			if(Buttons.draw[2] == true) {
+			if(Buttons.drawbuttons[2].getOn() == true) {
 				end = e.getPoint();
 				rectangle = new Rectangle2D.Double(Math.min(start.x, end.x), Math.min(start.y, end.y), Math.abs(start.x - end.x), Math.abs(start.y - end.y));
 				repaint();
 			}
 
-			if(Buttons.draw[3] == true) {
+			if(Buttons.drawbuttons[3].getOn() == true) {
 				end = e.getPoint();
 				elipse = new Ellipse2D.Double(Math.min(start.x, end.x), Math.min(start.y, end.y), Math.abs(start.x - end.x), Math.abs(start.y - end.y));
 				repaint();
@@ -103,26 +103,26 @@ public class Canvas extends JPanel {
 				sketch.end.add(sketch.sketch.size()-1);
 			}
 
-			if (Buttons.draw[0] == true) {
+			if (Buttons.drawbuttons[0].getOn() == true) {
 				memory.memory.push(null);
 				memory.colorMemory.push(ColorFrame.color);
 				memory.thicknessMemory.push(Stroke.thick);
 				sketch.end.add(sketch.sketch.size()-1);
 			}
 
-			if (Buttons.draw[1] == true) {
+			if (Buttons.drawbuttons[1].getOn() == true) {
 				memory.memory.push(line);
 				memory.colorMemory.push(ColorFrame.color);
 				memory.thicknessMemory.push(Stroke.thick);
 			}
 
-			if(Buttons.draw[2] == true) {
+			if(Buttons.drawbuttons[2].getOn() == true) {
 				memory.memory.push(rectangle);
 				memory.colorMemory.push(ColorFrame.color);
 				memory.thicknessMemory.push(Stroke.thick);
 			}
 
-			if(Buttons.draw[3] == true) {
+			if(Buttons.drawbuttons[3].getOn() == true) {
 				memory.memory.push(elipse);
 				memory.colorMemory.push(ColorFrame.color);
 				memory.thicknessMemory.push(Stroke.thick);
@@ -185,21 +185,21 @@ public class Canvas extends JPanel {
 				}
 
 				//스케치
-				if(Buttons.draw[0] == true) {
+				if(Buttons.drawbuttons[0].getOn() == true) {
 					for (int i = sketch.next; i < sketch.sketch.size() -1; i++)
 						g2.drawLine(sketch.sketch.get(i).x, sketch.sketch.get(i).y, sketch.sketch.get(i+1).x, sketch.sketch.get(i+1).y);
 				}
 
 				//라인
-				if(Buttons.draw[1] == true)
+				if(Buttons.drawbuttons[1].getOn() == true)
 					g2.draw(line);
 
 				//사각형
-				if (Buttons.draw[2] == true)
+				if (Buttons.drawbuttons[2].getOn() == true)
 					g2.draw(rectangle);
 
 				//타원
-				if (Buttons.draw[3] == true)
+				if (Buttons.drawbuttons[3].getOn() == true)
 					g2.draw(elipse);
 			}
 

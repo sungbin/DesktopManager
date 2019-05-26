@@ -12,31 +12,45 @@ import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.JToolBar;
 
+import paints.drawbuttons.DrawButton;
+
 public class Buttons implements MouseListener {
 	JButton[] toolbuttons = new JButton[9];
-	JButton[] drawbuttons = new JButton[4];
 	static CanvasGroup canvas = new CanvasGroup();
 	Stroke stroke = new Stroke();
 	static boolean clear;
 	static boolean erase;
 	static boolean text;
-	static boolean[] draw = new boolean[4];
+	
+//	static boolean[] draw = new boolean[4]; 얘네 디자인 적용 
+//	JButton[] drawbuttons = new JButton[4];
+	
+	static DrawButton[] drawbuttons = new DrawButton[4];
+	
 	
 	int canvasNum = 0;
 
 	Buttons() {
 
 		for(int i = 0; i < toolbuttons.length; i++) {
-			toolbuttons[i] = new JButton(new ImageIcon("icon/"+i+".png"));
+//			toolbuttons[i] = new JButton(new ImageIcon("icon/"+i+".png"));
+			toolbuttons[i] = new JButton(new ImageIcon("red.png"));
 			toolbuttons[i].setBorderPainted(true);
 			toolbuttons[i].addMouseListener(this);
 		}
 
-		for(int i = 0; i < drawbuttons.length; i++) {
-			drawbuttons[i] = new JButton(new ImageIcon("icon/3-"+i+".png"));
-			drawbuttons[i].setBorderPainted(true);
-			drawbuttons[i].addMouseListener(this);
-		}
+
+		paints.drawbuttons.Eclipse eclipseButton = new paints.drawbuttons.Eclipse(this);
+		paints.drawbuttons.Erase eraseButton = new paints.drawbuttons.Erase(this);
+		paints.drawbuttons.Line lineButton = new paints.drawbuttons.Line(this);
+		paints.drawbuttons.Rectangle rectangleButton = new paints.drawbuttons.Rectangle(this);
+		
+		
+		drawbuttons[0] = eraseButton;
+		drawbuttons[1] = lineButton;
+		drawbuttons[2] = rectangleButton;
+		drawbuttons[3] = eclipseButton;
+		
 	}
 
 	@Override
@@ -45,11 +59,11 @@ public class Buttons implements MouseListener {
 		
 		JButton button = (JButton)e.getSource();
 
-		if (button == toolbuttons[0]) {
+		if (button == toolbuttons[0]) { //sb	
 			undo();
 		}
 
-		if (button == toolbuttons[1]) {
+		if (button == toolbuttons[1]) { //sb
 			redo();
 		}
 
@@ -83,19 +97,19 @@ public class Buttons implements MouseListener {
 			CheckFrame check = new CheckFrame();
 		}
 
-		if (button == drawbuttons[0]) {
+		if (button == drawbuttons[0].getButton()) {
 			setDraw(button);
 		}
 
-		if (button == drawbuttons[1]) {
+		if (button == drawbuttons[1].getButton()) {
 			setDraw(button);
 		}
 
-		if (button == drawbuttons[2]) {
+		if (button == drawbuttons[2].getButton()) {
 			setDraw(button);
 		}
 
-		if (button == drawbuttons[3]) {
+		if (button == drawbuttons[3].getButton()) {
 			setDraw(button);
 		}
 	}
@@ -129,8 +143,8 @@ public class Buttons implements MouseListener {
 		toolbuttons[6].setBorderPainted(false);
 
 		for(int i = 0; i < drawbuttons.length; i++) {
-			draw[i] = false;
-			drawbuttons[i].setBorderPainted(false);
+			drawbuttons[i].off();
+			drawbuttons[i].getButton().setBorderPainted(false);
 		}
 
 	}
@@ -143,8 +157,8 @@ public class Buttons implements MouseListener {
 		toolbuttons[6].setBorderPainted(true);
 
 		for(int i = 0; i < drawbuttons.length; i++) {
-			draw[i] = false;
-			drawbuttons[i].setBorderPainted(false);
+			drawbuttons[i].off();
+			drawbuttons[i].getButton().setBorderPainted(false);
 		}
 	}
 
@@ -156,13 +170,13 @@ public class Buttons implements MouseListener {
 		toolbuttons[6].setBorderPainted(false);
 
 		for(int i = 0; i < drawbuttons.length; i++) {
-			if (button == drawbuttons[i]) {
-				draw[i] = true;
-				drawbuttons[i].setBorderPainted(true);
+			if (button == drawbuttons[i].getButton()) {
+				drawbuttons[i].on();
+				drawbuttons[i].getButton().setBorderPainted(true);
 			}
 			else {
-				draw[i] = false;
-				drawbuttons[i].setBorderPainted(false);
+				drawbuttons[i].off();
+				drawbuttons[i].getButton().setBorderPainted(false);
 			}
 		}
 
@@ -176,8 +190,8 @@ public class Buttons implements MouseListener {
 		toolbuttons[6].setBorderPainted(false);
 		
 		for(int i = 0; i < drawbuttons.length; i++) {
-			draw[i] = false;
-			drawbuttons[i].setBorderPainted(false);
+			drawbuttons[i].off();
+			drawbuttons[i].getButton().setBorderPainted(false);
 		}
 
 	}
