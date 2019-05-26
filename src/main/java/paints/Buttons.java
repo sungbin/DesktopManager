@@ -1,26 +1,28 @@
 package paints;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JList;
-import javax.swing.JSpinner;
-import javax.swing.JToolBar;
 
 import paints.drawbuttons.DrawButton;
+import paints.recallers.Recaller;
+import paints.recallers.Redo;
+import paints.recallers.Undo;
 
 public class Buttons implements MouseListener {
 	JButton[] toolbuttons = new JButton[9];
-	static CanvasGroup canvas = new CanvasGroup();
+	public static CanvasGroup canvas = new CanvasGroup();
 	Stroke stroke = new Stroke();
 	static boolean clear;
 	static boolean erase;
 	static boolean text;
+	
+	static Recaller recaller = new Recaller();
+	static Redo redo = new Redo();
+	static Undo undo = new Undo();
 	
 //	static boolean[] draw = new boolean[4]; 얘네 디자인 적용 
 //	JButton[] drawbuttons = new JButton[4];
@@ -207,41 +209,13 @@ public class Buttons implements MouseListener {
 	}
 
 	private void undo() {
-		ColorFrame.colorChange = true;
-		
-		if(Memory.memory.isEmpty() == true)
-			;
-		else {
-			if(Memory.memory.peek() == null) {
-				Sketch.redoStart.push(Sketch.start.pop());
-				Sketch.redoEnd.push(Sketch.end.pop());
-			}
-			
-			Memory.redoMemory.push(Memory.memory.pop());
-			Memory.redoColorMemory.push(Memory.colorMemory.pop());
-			Memory.redoThicknessMemory.push(Memory.thicknessMemory.pop());
-			
-			canvas.getSelectedComponent().repaint();
-		}
+		recaller.setState(undo);
+		recaller.recall();
 	}
 	
 	private void redo() {
-		ColorFrame.colorChange = true;
-		
-		if(Memory.redoMemory.isEmpty() == true)
-			;
-		else {
-			if(Memory.redoMemory.peek() == null) {
-				Sketch.start.push(Sketch.redoStart.pop());
-				Sketch.end.push(Sketch.redoEnd.pop());
-			}
-			
-			Memory.memory.push(Memory.redoMemory.pop());
-			Memory.colorMemory.push(Memory.redoColorMemory.pop());
-			Memory.thicknessMemory.push(Memory.redoThicknessMemory.pop());
-			
-			canvas.getSelectedComponent().repaint();
-		}
+		recaller.setState(redo);
+		recaller.recall();
 	}
 	
 }

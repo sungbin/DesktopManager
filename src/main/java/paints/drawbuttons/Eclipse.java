@@ -7,7 +7,7 @@ import javax.swing.JButton;
 
 public class Eclipse implements DrawButton {
 	private JButton button;
-	public boolean on;
+	private boolean on;
 	
 	@Override
 	public void on() {

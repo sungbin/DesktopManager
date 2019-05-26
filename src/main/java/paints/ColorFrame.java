@@ -14,7 +14,7 @@ public class ColorFrame extends JFrame implements ChangeListener{
 	
 	ColorSelectionModel model = colorChooser.getSelectionModel();
 	static Color color = Color.black;
-	static boolean colorChange;
+	public static boolean colorChange;
 	
 	ColorFrame() {
 		setTitle("색상");
