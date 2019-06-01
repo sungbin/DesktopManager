@@ -2,26 +2,29 @@ package paints.recallers;
 
 import paints.Buttons;
 import paints.ColorFrame;
-import paints.Memory;
 import paints.Sketch;
+import paints.recallers.memories.RedoCareTaker;
+import paints.recallers.memories.UndoCareTaker;
 
 public class Undo implements RecallState {
 
 	@Override
 	public void recall() {
+		
+		UndoCareTaker undoTaker = UndoCareTaker.getInstance();
+		RedoCareTaker redoTaker = RedoCareTaker.getInstance();
+		
 		ColorFrame.colorChange = true;
 		
-		if(Memory.memory.isEmpty() == true)
-			;
+		if(undoTaker.mementos.isEmpty() == true);
 		else {
-			if(Memory.memory.peek() == null) {
+			if(undoTaker.mementos.peek() == null) {
 				Sketch.redoStart.push(Sketch.start.pop());
 				Sketch.redoEnd.push(Sketch.end.pop());
 			}
 			
-			Memory.redoMemory.push(Memory.memory.pop());
-			Memory.redoColorMemory.push(Memory.colorMemory.pop());
-			Memory.redoThicknessMemory.push(Memory.thicknessMemory.pop());
+			
+			redoTaker.push(undoTaker.pop());
 			
 			Buttons.canvas.getSelectedComponent().repaint();
 		}
