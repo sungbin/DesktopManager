@@ -1,25 +1,23 @@
 package project.team.oodp.desktop;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
-import paints.Frame;
 import project.team.oodp.desktop.clocks.SuperClock;
 import project.team.oodp.desktop.login.SuperLogInFactory;
 
@@ -29,7 +27,6 @@ public class GuestDesktop extends Desktop{
 	JButton window_btn;
 	JLabel empty1, empty2, empty3, empty4, empty5, empty6;
 	JButton create_folder, delete_folder, create_file, delete_file;
-	JButton clock_btn;
 	
 	JButton[] folder_btn = new JButton[30];
 	static int number_of_folder = 0;
@@ -81,76 +78,21 @@ public class GuestDesktop extends Desktop{
 		empty4 = new JLabel();
 		empty5 = new JLabel();
 		empty6 = new JLabel();
-		
-		
-		
-		clock_btn = new JButton("Clock");
-		
-		clock_btn.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				CheckColor cc = new CheckColor();  //Strategy Pattern
-			}
-			
-		});
-		
-		
-		clock_btn.setBackground(new java.awt.Color(248,248,248));
-		create_folder.setBackground(new java.awt.Color(248,248,248));
-		delete_folder.setBackground(new java.awt.Color(248,248,248));
 
 		bottom_panel.add(create_folder);
 		bottom_panel.add(delete_folder);
-		bottom_panel.add(clock_btn);
 		
 		JPanel clock_panel = new JPanel();
 		SuperClock time = new SuperClock();
-		
-
-	    clock_panel.add(time);
-	    clock_panel.addMouseListener(new MouseListener(){
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-	    	
-	    });
 	      
+	      clock_panel.add(time);
 	      
 		bottom_panel.add(clock_panel);      
 		
 		
 		side_panel = new JPanel();
 		
+//		add(side_panel, "West");
 		add(center_panel, "Center");
 		add(bottom_panel, "South");
 		

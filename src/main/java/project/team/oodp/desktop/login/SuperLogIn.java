@@ -26,7 +26,7 @@ public class SuperLogIn extends LogIn{
 	private JButton signup_btn;
 	private JPasswordField pw_txt;
 	private JTextField id_txt;
-	
+	public static String current_id;
 	SuperLogIn(){
 		setTitle("Login");
 		setSize(400, 200);
@@ -130,6 +130,7 @@ public class SuperLogIn extends LogIn{
 			Account account = (Account)iterator.next();
 			if(account.getId().equals(id_txt.getText()) ){
 				id_check = true;
+				current_id = id_txt.getText();
 				char [] pw_arr = pw_txt.getPassword();
 				String pw = new String(pw_arr);
 				if(account.getPassword().equals(pw)){
@@ -138,32 +139,11 @@ public class SuperLogIn extends LogIn{
 			}
 		}
 		
-		/*for(String id : Main.accountList.getAccount(index)){
-			
-			if(id.equals("admin")){
-				id_check = true;
-				break;
-			}
-		
-			if(id_txt.getText().equals(id))
-				id_check = true;
-		}
-		
-		for(String pw : SignUp.pw_list){
-			
-			if(pw.equals("123")){
-				pw_check = true;
-				break;
-			}
-			
-			pw_check = true;
-				
-		}*/
-		
 		/* make it Template as */
 		if(id_check == true && pw_check == true){
 			
 			JOptionPane.showMessageDialog(null, "Success");
+//			current
 			try {
 				new UserDesktop();
 			} catch (IOException e) {
