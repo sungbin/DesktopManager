@@ -194,5 +194,10 @@ public class UserDesktop extends Desktop{
 
 		});
 	}
+	
+	public void UserDesktop() {
+		
+	}
+	
 
 }

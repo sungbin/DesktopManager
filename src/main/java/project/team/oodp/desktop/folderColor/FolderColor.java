@@ -4,8 +4,7 @@ import java.awt.Color;
 
 public abstract class FolderColor {
 	
-	public Color setFolderColor() {
-		return Color.BLACK;}
+	public abstract Color setFolderColor();
 	
 
 }

@@ -173,4 +173,7 @@ public class GuestDesktop extends Desktop{
 		makeGuestClockIcon.makeGusetApplicationIcon();
 		
 	}
+	public void UserDesktop() {
+		
+	}
 }

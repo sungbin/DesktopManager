@@ -10,7 +10,7 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-public class SuperClock extends JLabel implements ActionListener,Clock{
+public class SuperClock extends JLabel implements ActionListener{
 	
 	SimpleDateFormat sdf;
 	
