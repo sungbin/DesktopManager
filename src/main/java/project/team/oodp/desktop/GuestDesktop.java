@@ -119,6 +119,7 @@ public class GuestDesktop extends Desktop{
 				JPanel folder_panel = new JPanel();
 				add(folder_panel);
 				
+				
 				makeGuestFileColleague.guestModifyFile(folder_panel);
 
 			}
@@ -159,6 +160,7 @@ public class GuestDesktop extends Desktop{
 				setVisible(true);
 				
 				deleteGuestFileColleague.guestModifyFile(folder_panel);
+
 			}
 
 		});
