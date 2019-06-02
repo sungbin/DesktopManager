@@ -5,22 +5,14 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
-import paints.Frame;
 import project.team.oodp.desktop.clocks.SuperClock;
 import project.team.oodp.desktop.folderColor.FolderColor;
 import project.team.oodp.desktop.folderColor.RedFolder;
@@ -65,7 +57,6 @@ public class UserDesktop extends Desktop{
 		center_panel.setBackground(new Color(0, 128, 128));
 
 		side_panel = new JPanel();
-
 		side_panel.setSize(100,100);
 		side_panel.setBackground(Color.yellow);
 		create_folder = new JButton("Create Folder");
@@ -80,10 +71,10 @@ public class UserDesktop extends Desktop{
 
 		bottom_panel = new JPanel();
 		bottom_panel.setBackground(Color.GRAY);
-		bottom_panel.setSize(100, 100);
-		bottom_panel.setLayout(new GridLayout(1, 10));
+		bottom_panel.setSize(100,100);
+		bottom_panel.setLayout(new GridLayout(1,10));
 		window_btn = new JButton("Start");
-		window_btn.addActionListener(new ActionListener() {
+		window_btn.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -100,31 +91,13 @@ public class UserDesktop extends Desktop{
 		empty5 = new JLabel();
 		empty6 = new JLabel();
 
-		clock_btn = new JButton("Clock");
-
-		clock_btn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				CheckColor cc = new CheckColor(); // Strategy Pattern
-			}
-
-		});
-
-		clock_btn.setBackground(new java.awt.Color(248, 248, 248));
-		create_folder.setBackground(new java.awt.Color(248, 248, 248));
-		delete_folder.setBackground(new java.awt.Color(248, 248, 248));
-
 		bottom_panel.add(create_folder);
 		bottom_panel.add(delete_folder);
-
 
 		JPanel clock_panel = new JPanel();
 		SuperClock time = new SuperClock();
 
 		clock_panel.add(time);
-
 
 		bottom_panel.add(clock_panel);      
 
@@ -132,9 +105,6 @@ public class UserDesktop extends Desktop{
 
 		add(center_panel, "Center");
 		add(bottom_panel, "South");
-
-
-		//수정 
 
 //폴터 생성
 		create_folder.addActionListener(new ActionListener() {
@@ -223,7 +193,6 @@ public class UserDesktop extends Desktop{
 			}
 
 		});
-
 	}
 
 }
