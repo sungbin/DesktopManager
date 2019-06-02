@@ -20,7 +20,7 @@ public class Line implements DrawButton {
 		return button;
 	}
 	public Line(MouseListener m) {
-		button = new JButton(new ImageIcon("red.png"));
+		button = new JButton(new ImageIcon("icon/02.png"));
 		button.setBorderPainted(true);
 		button.addMouseListener(m);
 	}

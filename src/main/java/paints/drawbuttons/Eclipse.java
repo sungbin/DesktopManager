@@ -21,7 +21,7 @@ public class Eclipse implements DrawButton {
 	}
 	
 	public Eclipse(MouseListener m) {
-		button = new JButton(new ImageIcon("red.png"));
+		button = new JButton(new ImageIcon("icon/04.png"));
 		button.setBorderPainted(true);
 		button.addMouseListener(m);
 	}

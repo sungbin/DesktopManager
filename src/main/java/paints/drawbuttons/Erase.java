@@ -20,7 +20,7 @@ public class Erase implements DrawButton {
 		return button;
 	}
 	public Erase(MouseListener m) {
-		button = new JButton(new ImageIcon("red.png"));
+		button = new JButton(new ImageIcon("icon/01.png"));
 		button.setBorderPainted(true);
 		button.addMouseListener(m);
 	}

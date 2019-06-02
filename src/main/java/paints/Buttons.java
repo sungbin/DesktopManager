@@ -35,8 +35,8 @@ public class Buttons implements MouseListener {
 	Buttons() {
 
 		for(int i = 0; i < toolbuttons.length; i++) {
-//			toolbuttons[i] = new JButton(new ImageIcon("icon/"+i+".png"));
-			toolbuttons[i] = new JButton(new ImageIcon("red.png"));
+			toolbuttons[i] = new JButton(new ImageIcon("icon/"+i+".png"));
+//			toolbuttons[i] = new JButton(new ImageIcon("red.png"));
 			toolbuttons[i].setBorderPainted(true);
 			toolbuttons[i].addMouseListener(this);
 		}
@@ -83,10 +83,10 @@ public class Buttons implements MouseListener {
 			setEraser();
 		}
 
-		if (button == toolbuttons[6]) {
-			setText();
-			TextBoard textBoard = new TextBoard();
-		}
+//		if (button == toolbuttons[6]) {
+//			setText();
+//			TextBoard textBoard = new TextBoard();
+//		}
 
 		if (button == toolbuttons[7]) {
 			setInit();
@@ -94,10 +94,10 @@ public class Buttons implements MouseListener {
 			canvas.getSelectedComponent().repaint();
 		}
 
-		if (button == toolbuttons[8]) {
-			setInit();
-			CheckFrame check = new CheckFrame();
-		}
+//		if (button == toolbuttons[8]) {
+//			setInit();
+//			CheckFrame check = new CheckFrame();
+//		}
 
 		if (button == drawbuttons[0].getButton()) {
 			setDraw(button);

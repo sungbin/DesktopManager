@@ -20,7 +20,7 @@ public class Rectangle implements DrawButton {
 		return button;
 	}
 	public Rectangle(MouseListener m) {
-		button = new JButton(new ImageIcon("red.png"));
+		button = new JButton(new ImageIcon("icon/03.png"));
 		button.setBorderPainted(true);
 		button.addMouseListener(m);
 	}
