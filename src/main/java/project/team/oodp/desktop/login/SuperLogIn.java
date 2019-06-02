@@ -1,5 +1,5 @@
 package project.team.oodp.desktop.login;
-
+//
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,6 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import project.team.oodp.desktop.GuestDesktop;
+import project.team.oodp.desktop.Main;
 import project.team.oodp.desktop.UserDesktop;
 
 public class SuperLogIn extends LogIn{
@@ -124,13 +125,26 @@ public class SuperLogIn extends LogIn{
 		boolean id_check = false;
 		boolean pw_check = false;
 		
+		Iterator iterator =  Main.accountList.iterator();
 		
-		for(String id : SignUp.id_list){
+		while(iterator.hasNext()){
+			Account account = (Account)iterator.next();
+			if(account.getId().equals(id_txt.getText()) ){
+				id_check = true;
+				char [] pw_arr = pw_txt.getPassword();
+				String pw = new String(pw_arr);
+				if(account.getPassword().equals(pw)){
+					pw_check = true;
+				}
+			}
+		}
+		
+		/*for(String id : Main.accountList.getAccount(index)){
 			
-			/*if(id.equals("admin")){
+			if(id.equals("admin")){
 				id_check = true;
 				break;
-			}*/
+			}
 		
 			if(id_txt.getText().equals(id))
 				current_id = id;
@@ -139,14 +153,14 @@ public class SuperLogIn extends LogIn{
 		
 		for(String pw : SignUp.pw_list){
 			
-			/*if(pw.equals("123")){
+			if(pw.equals("123")){
 				pw_check = true;
 				break;
-			}*/
+			}
 			
 			pw_check = true;
 				
-		}
+		}*/
 		
 		/* make it Template as */
 		if(id_check == true && pw_check == true){
