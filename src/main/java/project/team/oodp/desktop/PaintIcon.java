@@ -14,11 +14,8 @@ public class PaintIcon implements ApplicationIcon{
 	@Override
 	public void makeApplicationIcon() {
 		// TODO Auto-generated method stub
-		JLabel paint_name = new JLabel("Paint");
-		paint_name.setBounds(100, 690, 80, 20);
-		UserDesktop.center_panel.add(paint_name);
 		
-		UserDesktop.paint_btn = new JButton();
+		UserDesktop.paint_btn = new JButton("Paint");
 		UserDesktop.paint_btn.setBackground(Color.white);
 		UserDesktop.paint_btn.setBounds(80, 690, 80, 20);
 		UserDesktop.center_panel.add(UserDesktop.paint_btn);
@@ -32,7 +29,6 @@ public class PaintIcon implements ApplicationIcon{
 				UserDesktop.side_panel.setVisible(false);
 				UserDesktop.bottom_panel.setVisible(false);
 				Frame fram = new Frame();
-				fram.main(null);
 			}
 
 		});
