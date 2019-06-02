@@ -30,5 +30,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="lib" path="lib/junit_4/junit-4.5.jar"/>
+	<classpathentry kind="lib" path="lib/swing-layout/swing-layout-1.0.4.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>
