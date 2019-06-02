@@ -39,6 +39,10 @@ public class UserDesktop extends Desktop{
 	JButton[] folder_btn = new JButton[30];
 	static int number_of_folder = 0;
 	static ArrayList<String> folder_name = new ArrayList<String>();
+	IMediator mediator = new ConcreteMediator();
+	FileMaker makeFileColleague = new FileMaker(mediator);
+	FileDeleter deleteFileColleague = new FileDeleter(mediator);
+
 	
 	
 	public UserDesktop() throws IOException{
@@ -127,16 +131,11 @@ public class UserDesktop extends Desktop{
 				
 				setLocation(150, 150);
 				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				
+
 				JPanel folder_panel = new JPanel();
 				add(folder_panel);
-				placeCreateFolderPanel(folder_panel);
 				
-				add(folder_panel);
-				
-				setVisible(true);
-				
-				//dispose();
+				makeFileColleague.modifyFile(folder_panel);	
 			}
 
 		});
@@ -219,98 +218,17 @@ public class UserDesktop extends Desktop{
 						
 						setLocation(150, 150);
 						setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-						
+
 						JPanel folder_panel = new JPanel();
 						add(folder_panel);
 						
-						placeDeleteFolderPanel(folder_panel);
-						
-						add(folder_panel);
-						
+
 						setVisible(true);
+						
+						deleteFileColleague.modifyFile(folder_panel);
 					}
 
 				});
 	}
 	
-	
-	private void placeCreateFolderPanel(JPanel folder_panel) {
-	    JTextField folder_name_txt;
-	    
-		folder_panel.setLayout(null);
-		
-		
-		JLabel folder_name_label = new JLabel("Folder Name");
-		folder_name_label.setBounds(120, 30, 80, 25);
-		folder_panel.add(folder_name_label);
-		
-		folder_name_txt = new JTextField(20);
-		folder_name_txt.setBounds(120, 70, 160, 25);
-		folder_panel.add(folder_name_txt);
-		
-		JButton button = new JButton("Create");
-		button.setBounds(120, 100, 80, 25);
-		folder_panel.add(button);
-		
-		button.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				try {
-					folder_name.add(folder_name_txt.getText());
-					number_of_folder++;
-					dispose();
-					new UserDesktop();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-		});
-		
-	}
-	
-	private void placeDeleteFolderPanel(JPanel folder_panel) {
-		JTextField folder_name_txt;
-	    
-		folder_panel.setLayout(null);
-		
-		JLabel folder_name_label = new JLabel("Folder Name");
-		folder_name_label.setBounds(130, 30, 80, 25);
-		folder_panel.add(folder_name_label);
-		
-		folder_name_txt = new JTextField(20);
-		folder_name_txt.setBounds(120, 70, 160, 25);
-		folder_panel.add(folder_name_txt);
-		
-		JButton button = new JButton("Delete");
-		button.setBounds(120, 100, 80, 25);
-		folder_panel.add(button);
-		
-		button.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				try {
-					for(int i = 0; i < number_of_folder; i++) {
-						if(folder_name_txt.getText().equals(folder_name.get(i))) {
-							folder_name.remove(i);
-							number_of_folder--;
-							break;
-						}
-					}
-					dispose();
-					new UserDesktop();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-		});
-		
-	}
 }
