@@ -11,7 +11,7 @@ public class Frame extends JFrame {
 	public Frame() {
 		setTitle("그림판");
 		setSize(1440,800);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		add(toolbar, BorderLayout.NORTH);
 		add(toolbar.buttons.canvas);
