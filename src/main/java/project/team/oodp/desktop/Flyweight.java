@@ -1,6 +1,6 @@
 package project.team.oodp.desktop;
 
-public class Flyweight{
+public class Flyweight {
 	private String data;
 
 
@@ -8,7 +8,6 @@ public class Flyweight{
 		this.data = data;
 	}
 	
-	@override
 	public String getData(){
 		return data;
 	}
