@@ -2,7 +2,9 @@ package project.team.oodp.desktop;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -10,6 +12,7 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,6 +33,8 @@ public class UserDesktop extends Desktop{
 	public static JButton window_btn, paint_btn,clock_btn;
 	JLabel empty1, empty2, empty3, empty4, empty5, empty6;
 	JButton create_folder, delete_folder, create_file, delete_file;
+	static int count = 0;
+	ImageIcon icon;
 
 	//수정 
 	JButton[] folder_btn = new JButton[30];
@@ -42,6 +47,15 @@ public class UserDesktop extends Desktop{
 
 
 	public UserDesktop() throws IOException{
+		BackgroundImage back = new BackgroundStar();
+		BackgroundImage back2 = new BackgroundMountain();
+		
+		if(count%2 == 0) {
+			icon = new ImageIcon(back.setBackground());
+		}else {
+			icon = new ImageIcon(back2.setBackground());
+		}
+		count++;
 
 		//superlogin에서 current_id 추가해주기 
 		FlyweightFactory factory = new FlyweightFactory();
@@ -55,7 +69,14 @@ public class UserDesktop extends Desktop{
 		setVisible(true);
 
 		setLayout(new BorderLayout());
-		center_panel = new JPanel();
+		center_panel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				g.drawImage(icon.getImage(), 0,0,null);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
+		
 		center_panel.setBackground(new Color(0, 128, 128));
 
 		side_panel = new JPanel();
