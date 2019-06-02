@@ -34,7 +34,7 @@ public class UserDesktop extends Desktop {
 	JLabel empty1, empty2, empty3, empty4, empty5, empty6;
 	JButton create_folder, delete_folder, create_file, delete_file;
 	JButton clock_btn;
-	// 수정
+	// ìˆ˜ì •
 	// FileManager fm = new FileManager();
 	JButton[] folder_btn = new JButton[30];
 	static int number_of_folder = 0;
@@ -46,7 +46,7 @@ public class UserDesktop extends Desktop {
 
 //		jf.setLayout(new BorderLayout());
 		setTitle("Welcome to Desktop Manager :)");
-		setSize(1000, 800);
+		setSize(1000, 750);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setVisible(true);
@@ -156,7 +156,7 @@ public class UserDesktop extends Desktop {
 		add(center_panel, "Center");
 		add(bottom_panel, "South");
 
-		// 수정
+		// ìˆ˜ì •
 
 		create_folder.addActionListener(new ActionListener() {
 
@@ -183,7 +183,7 @@ public class UserDesktop extends Desktop {
 
 		});
 
-		// 어플리케이션 생성하는 부분
+		// ì–´í”Œë¦¬ì¼€ì�´ì…˜ ìƒ�ì„±í•˜ëŠ” ë¶€ë¶„
 		center_panel.setLayout(null);
 		JLabel paint_name = new JLabel("Paint");
 		paint_name.setBounds(100, 690, 80, 20);
@@ -214,8 +214,18 @@ public class UserDesktop extends Desktop {
 		watch_btn.setBackground(Color.white);
 		watch_btn.setBounds(200, 690, 80, 20);
 		center_panel.add(watch_btn);
+		
+		watch_btn.addActionListener(new ActionListener() {
 
-		// 폴더를 생성하는 부분
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+
+		});
+
+		// í�´ë�”ë¥¼ ìƒ�ì„±í•˜ëŠ” ë¶€ë¶„
 		FolderColor yellow = new YellowFolder();
 		FolderColor red = new RedFolder();
 		Iterator<String> itr = folder_name.iterator();

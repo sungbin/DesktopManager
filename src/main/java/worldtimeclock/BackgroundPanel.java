@@ -4,7 +4,7 @@ package worldtimeclock;
 public class BackgroundPanel extends javax.swing.JPanel
 {
     private java.awt.image.BufferedImage backgroundImage;
-
+    
     public BackgroundPanel()
     {
         this.setPreferredSize(new java.awt.Dimension(200, 150));
@@ -12,6 +12,7 @@ public class BackgroundPanel extends javax.swing.JPanel
         setOpaque(false);
         init();
     }
+    
 
     private void init()
     {

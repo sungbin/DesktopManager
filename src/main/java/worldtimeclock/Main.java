@@ -4,11 +4,12 @@ package worldtimeclock;
 public class Main extends javax.swing.JFrame
 {
 
-	private worldtimeclock.BackgroundPanel backgroundPanel1;
-    private worldtimeclock.ClockPanel clockPanel1;
-    private worldtimeclock.ClockPanel clockPanel2;
-    private worldtimeclock.ClockPanel clockPanel3;
-    private worldtimeclock.ClockPanel clockPanel4;
+	private BackgroundPanel backgroundPanel1;
+    private ClockPanel clockPanel1;
+    private ClockPanel clockPanel2;
+    private ClockPanel clockPanel3;
+    private ClockPanel clockPanel4;
+
     
     public Main()
     {
@@ -16,28 +17,38 @@ public class Main extends javax.swing.JFrame
     }
 
     private void initComponents() {
+    	CityCollection cities = populateCities();
+		CityIterator baseIterator = cities.iterator(CityEnum.SINGLETON);
+		CityEnum singleton = CityEnum.SINGLETON;
+	
+        backgroundPanel1 = new BackgroundPanel();
+        clockPanel1 = new ClockPanel();
+        clockPanel2 = new ClockPanel();
+        clockPanel3 = new ClockPanel();
+        clockPanel4 = new ClockPanel();
 
-        backgroundPanel1 = new worldtimeclock.BackgroundPanel();
-        clockPanel1 = new worldtimeclock.ClockPanel();
-        clockPanel2 = new worldtimeclock.ClockPanel();
-        clockPanel3 = new worldtimeclock.ClockPanel();
-        clockPanel4 = new worldtimeclock.ClockPanel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         backgroundPanel1.setName("backgroundPanel1");
 
-        clockPanel1.setCity(worldtimeclock.City.Seoul);
-        clockPanel1.setName("clockPanel1"); 
-
-        clockPanel2.setCity(worldtimeclock.City.HongKong);
-        clockPanel2.setName("clockPanel2"); 
-
-        clockPanel3.setCity(worldtimeclock.City.NewYork);
-        clockPanel3.setName("clockPanel3"); 
-
-        clockPanel4.setCity(worldtimeclock.City.LaPaz);
-        clockPanel4.setName("clockPanel4"); 
+        while (baseIterator.hasNext()) {
+			Place c = baseIterator.next();
+			singleton.setNameOffset("Seoul", -32400000);
+			clockPanel1.setCity(CityEnum.SINGLETON);
+		    clockPanel1.setName("clockPanel1"); 
+		    singleton.setNameOffset("HonKong", -28800000);
+		    c = baseIterator.next();
+		    clockPanel2.setCity(CityEnum.SINGLETON);
+		    clockPanel2.setName("clockPanel2"); 
+		    singleton.setNameOffset("New York", 18000000);
+		    c = baseIterator.next();
+		    clockPanel3.setCity(CityEnum.SINGLETON);
+		    clockPanel3.setName("clockPanel3");
+		    singleton.setNameOffset("La Paz", 14400000);
+		    c = baseIterator.next();
+		    clockPanel4.setCity(CityEnum.SINGLETON);
+		    clockPanel4.setName("clockPanel4"); 
+		}
 
         org.jdesktop.layout.GroupLayout backgroundPanel1Layout = new org.jdesktop.layout.GroupLayout(backgroundPanel1);
         backgroundPanel1.setLayout(backgroundPanel1Layout);
@@ -85,6 +96,8 @@ public class Main extends javax.swing.JFrame
 
     public static void main(String args[])
     {
+    	
+    	
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             @Override
@@ -97,4 +110,14 @@ public class Main extends javax.swing.JFrame
         });
     }
     
+    private static CityCollection populateCities() {
+		CityCollection cities = new CityCollectionImpl();
+		
+		cities.addCity(new Place(-32400000, CityEnum.SINGLETON));
+		cities.addCity(new Place(-28800000, CityEnum.SINGLETON));
+		cities.addCity(new Place(18000000, CityEnum.SINGLETON));
+		cities.addCity(new Place(14400000, CityEnum.SINGLETON));
+	
+		return cities;
+	}
 }

@@ -403,7 +403,8 @@ public class AnalogClock extends javax.swing.JComponent implements java.awt.even
                     int oldTimeOfDay = this.timeOfDay;
                     setType(TYPE.DARK);
                     this.timeOfDay = -2;
-                    firePropertyChange(TIMEOFDAY_PROPERTY, oldTimeOfDay, timeOfDay);                    
+                    firePropertyChange(TIMEOFDAY_PROPERTY, oldTimeOfDay, timeOfDay);
+                   
                 }
                 else if (java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY) - timeZoneOffsetHour < 6)
                 {
@@ -411,7 +412,8 @@ public class AnalogClock extends javax.swing.JComponent implements java.awt.even
                     int oldTimeOfDay = this.timeOfDay;
                     setType(TYPE.DARK);
                     this.timeOfDay = -1;
-                    firePropertyChange(TIMEOFDAY_PROPERTY, oldTimeOfDay, timeOfDay);                    
+                    firePropertyChange(TIMEOFDAY_PROPERTY, oldTimeOfDay, timeOfDay);
+                 
                 }
                 else if(java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY) - this.timeZoneOffsetHour >= 20)
                 {
@@ -420,6 +422,7 @@ public class AnalogClock extends javax.swing.JComponent implements java.awt.even
                     setType(TYPE.DARK);
                     this.timeOfDay = -2;
                     firePropertyChange(TIMEOFDAY_PROPERTY, oldTimeOfDay, timeOfDay);
+            
                 }
                 else if(java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY) - this.timeZoneOffsetHour >= 18)
                 {
@@ -427,7 +430,8 @@ public class AnalogClock extends javax.swing.JComponent implements java.awt.even
                     int oldTimeOfDay = this.timeOfDay;
                     setType(TYPE.DARK);
                     this.timeOfDay = 1;
-                    firePropertyChange(TIMEOFDAY_PROPERTY, oldTimeOfDay, timeOfDay);                    
+                    firePropertyChange(TIMEOFDAY_PROPERTY, oldTimeOfDay, timeOfDay);  
+            
                 }                
                 else
                 {
@@ -435,7 +439,8 @@ public class AnalogClock extends javax.swing.JComponent implements java.awt.even
                     int oldTimeOfDay = this.timeOfDay;
                     setType(TYPE.LIGHT);
                     this.timeOfDay = 0;
-                    firePropertyChange(TIMEOFDAY_PROPERTY, oldTimeOfDay, timeOfDay);                    
+                    firePropertyChange(TIMEOFDAY_PROPERTY, oldTimeOfDay, timeOfDay);         
+              
                 }
 
                 if (java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY) - this.timeZoneOffsetHour >= 24)

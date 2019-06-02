@@ -3,9 +3,9 @@ package worldtimeclock;
 @SuppressWarnings("serial")
 public class ClockPanel extends javax.swing.JPanel implements java.beans.PropertyChangeListener
 {
-    private City city = City.Seoul;
-    private String cityName = City.Seoul.getName();
-    private long offset = City.Seoul.getOffset();
+    private CityEnum city = CityEnum.SINGLETON;
+    private String cityName = CityEnum.SINGLETON.getName();
+    private long offset = CityEnum.SINGLETON.getOffset();
 
     /*Creates new form ClockPanel*/
     public ClockPanel()
@@ -16,12 +16,12 @@ public class ClockPanel extends javax.swing.JPanel implements java.beans.Propert
         setPreferredSize(new java.awt.Dimension(358, 74));
     }
 
-    public City getCity()
+    public CityEnum getCity()
     {
         return this.city;
     }
 
-    public void setCity(City city)
+    public void setCity(CityEnum city)
     {
         this.city = city;
         this.cityName = city.getName();
