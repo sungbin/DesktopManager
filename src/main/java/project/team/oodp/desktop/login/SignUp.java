@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,22 +16,22 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import project.team.oodp.desktop.Main;
+
 public class SignUp extends JFrame {//implements ActionListener{
+	
+	
 	
 	JLabel id_label, pw_label, pw_check_label, email_label, phoneNum_label;
 	JTextField id_txt, email_txt, phoneNum_txt;
 	JPasswordField pw_txt, pw_check_txt;
 	JButton confirm_btn;
-	
-	//hashmap이나 다른거 의견 모아서 바꿀것. 임시 사용
-	static ArrayList <String> id_list = new ArrayList<String>();
-	static ArrayList <String> pw_list = new ArrayList<String>();
-	
+
 	SignUp(){
 		setTitle("Sign-Up");
 		setSize(500,700);
 		setLocation(1000, 300);
-		setDefaultCloseOperation(SignUp.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(SignUp.DISPOSE_ON_CLOSE);
 		
 		JLabel header_label = new JLabel("Registration Form for Desktop Manager: ");
 		header_label.setForeground(Color.blue);
@@ -43,6 +44,7 @@ public class SignUp extends JFrame {//implements ActionListener{
 		add(panel);
 		setVisible(true);
 	}
+	
 	
 	public void placeSignUpPanel(JPanel panel){
 		panel.setLayout(null);
@@ -106,8 +108,10 @@ public class SignUp extends JFrame {//implements ActionListener{
 		if(Arrays.equals(pw_txt.getPassword(), pw_check_txt.getPassword())){
 			char [] pw_arr = pw_txt.getPassword();
 			String pw = new String(pw_arr);
-			id_list.add(id_txt.getText());
-			pw_list.add(pw);
+			Main.accountList.addAccount(new Account(id_txt.getText(), pw));
+
+//			id_list.add(id_txt.getText());
+//			pw_list.add(pw);
 			dispose();
 			new SuperLogInFactory().createLogIn();
 		}
@@ -116,5 +120,7 @@ public class SignUp extends JFrame {//implements ActionListener{
 			JOptionPane.showMessageDialog(null, "Password not matched!\n Please check your password again");
 		}
 	}
+
+	
 
 }
