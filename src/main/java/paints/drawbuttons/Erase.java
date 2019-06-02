@@ -9,12 +9,12 @@ public class Erase implements DrawButton {
 	private JButton button;
 	public boolean on;
 	
-	@Override
+	 
 	public void on() {
 		on = true;
 	}
 
-	@Override
+	 
 	public JButton getButton() {
 		// TODO Auto-generated method stub
 		return button;
@@ -25,13 +25,13 @@ public class Erase implements DrawButton {
 		button.addMouseListener(m);
 	}
 
-	@Override
+	 
 	public void off() {
 		on = false;
 		
 	}
 
-	@Override
+	 
 	public boolean getOn() {
 		// TODO Auto-generated method stub
 		return on;
