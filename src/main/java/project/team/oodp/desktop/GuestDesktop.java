@@ -24,7 +24,7 @@ import project.team.oodp.desktop.login.SuperLogInFactory;
 public class GuestDesktop extends Desktop{
 	
 	public static  JPanel whole_panel, center_panel, bottom_panel, side_panel;
-	public static  JButton window_btn;
+	public static  JButton window_btn, paint_btn,clock_btn;
 	JLabel empty1, empty2, empty3, empty4, empty5, empty6;
 	JButton create_folder, delete_folder, create_file, delete_file;
 	
@@ -162,6 +162,15 @@ public class GuestDesktop extends Desktop{
 			}
 
 		});
+		
+		
+		//어플리케이션 생성
+		center_panel.setLayout(null);
+		
+		GuestApplicationIcon makeGuestPaintIcon = new GuestPaintIcon();
+		GuestApplicationIcon makeGuestClockIcon = new GuestClockIcon();
+		makeGuestPaintIcon.makeGusetApplicationIcon();
+		makeGuestClockIcon.makeGusetApplicationIcon();
 		
 	}
 }
