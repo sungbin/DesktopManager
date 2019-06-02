@@ -2,20 +2,24 @@ package paints;
 
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Stack;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import paints.recallers.memories.RedoCareTaker;
+import paints.recallers.memories.UndoCareTaker;
+import paints.recallers.memories.factories.UndoMemory;
 
 public class CheckFrame extends JFrame implements ActionListener {
 	private JLabel message = new JLabel("         이 캔버스를 정말로 삭제하시겠습니까?");
 	private JButton yes = new JButton("YES");
 	private  JButton no = new JButton("NO");
 	boolean answer;
+	UndoCareTaker undoTaker = UndoCareTaker.getInstance();
+	RedoCareTaker redoTaker = RedoCareTaker.getInstance();
 
 	public CheckFrame() {
 		setLayout(new BorderLayout());
@@ -42,13 +46,8 @@ public class CheckFrame extends JFrame implements ActionListener {
 		if(button == yes)
 			Buttons.canvas.remove(Buttons.canvas.getSelectedComponent());
 
-		Memory.memory.clear();
-		Memory.colorMemory.clear();
-		Memory.thicknessMemory.clear();
-		
-		Memory.redoMemory.clear();
-		Memory.redoColorMemory.clear();
-		Memory.redoThicknessMemory.clear();
+		undoTaker.mementos.clear();
+		redoTaker.mementos.clear();
 		
 		this.dispose();
 

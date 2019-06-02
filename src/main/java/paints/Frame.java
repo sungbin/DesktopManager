@@ -6,7 +6,6 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 public class Frame extends JFrame {
-	MenuBar menubar = new MenuBar();
 	ToolBar toolbar = new ToolBar();
 	Canvas canvas = new Canvas();
 	public Frame() {
@@ -14,7 +13,6 @@ public class Frame extends JFrame {
 		setSize(1440,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setJMenuBar(menubar);
 		add(toolbar, BorderLayout.NORTH);
 		add(toolbar.buttons.canvas);
 

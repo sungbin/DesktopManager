@@ -21,8 +21,16 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import paints.recallers.memories.Memento;
+import paints.recallers.memories.RedoCareTaker;
+import paints.recallers.memories.UndoCareTaker;
+import paints.recallers.memories.factories.UndoMemory;
+
 public class Canvas extends JPanel {
-	Memory memory = new Memory();
+	
+
+	UndoCareTaker undoTaker = UndoCareTaker.getInstance();
+	
 	Sketch sketch = new Sketch();
 //asdasddaasdsadasdad
 	Line2D.Double line;
@@ -97,35 +105,37 @@ public class Canvas extends JPanel {
 		public void mouseReleased(MouseEvent e) {
 
 			if (Buttons.erase == true) {
-				memory.memory.push(null);
-				memory.colorMemory.push(Color.white);
-				memory.thicknessMemory.push(Stroke.thick);
+				
+				Memento memento = new Memento(null,Color.white,Stroke.thick);
+				undoTaker.mementos.add(memento);
+
 				sketch.end.add(sketch.sketch.size()-1);
 			}
 
 			if (Buttons.drawbuttons[0].getOn() == true) {
-				memory.memory.push(null);
-				memory.colorMemory.push(ColorFrame.color);
-				memory.thicknessMemory.push(Stroke.thick);
+				
+				Memento memento = new Memento(null,ColorFrame.color,Stroke.thick);
+				undoTaker.mementos.add(memento);
+				
 				sketch.end.add(sketch.sketch.size()-1);
 			}
 
 			if (Buttons.drawbuttons[1].getOn() == true) {
-				memory.memory.push(line);
-				memory.colorMemory.push(ColorFrame.color);
-				memory.thicknessMemory.push(Stroke.thick);
+				
+				Memento memento = new Memento(line,ColorFrame.color,Stroke.thick);
+				undoTaker.mementos.add(memento);
 			}
 
 			if(Buttons.drawbuttons[2].getOn() == true) {
-				memory.memory.push(rectangle);
-				memory.colorMemory.push(ColorFrame.color);
-				memory.thicknessMemory.push(Stroke.thick);
+				
+				Memento memento = new Memento(rectangle,ColorFrame.color,Stroke.thick);
+				undoTaker.mementos.add(memento);
 			}
 
 			if(Buttons.drawbuttons[3].getOn() == true) {
-				memory.memory.push(elipse);
-				memory.colorMemory.push(ColorFrame.color);
-				memory.thicknessMemory.push(Stroke.thick);
+				
+				Memento memento = new Memento(elipse,ColorFrame.color,Stroke.thick);
+				undoTaker.mementos.add(memento);
 			}
 		}
 
@@ -142,29 +152,30 @@ public class Canvas extends JPanel {
 			g2.setColor(Color.white);
 			g2.setStroke(new BasicStroke(0));
 			g2.draw(clearShape);
-			memory.memory.push(clearShape);
-			memory.colorMemory.push(Color.white);
-			memory.thicknessMemory.push(0);
+			
+			Memento memento = new Memento(clearShape,Color.white,0);
+			undoTaker.mementos.add(memento);
+
 			Buttons.clear = false;
 		}
 
 		else {
 			int sketchNum = 0;
 
-			for(int i = 0; i < memory.memory.size(); i++) {
-				g2.setColor(memory.colorMemory.get(i));
-				g2.setStroke(new BasicStroke(memory.thicknessMemory.get(i)));
+			for(int i = 0; i < undoTaker.mementos.size(); i++) {
+				g2.setColor(undoTaker.mementos.get(i).getColorMemory());
+				g2.setStroke(new BasicStroke(undoTaker.mementos.get(i).getThicknessMemory()));
 
-				if(memory.memory.get(i)  == null) {
+				if(undoTaker.mementos.get(i).getMemory()  == null) {
 					for (int j = sketch.start.get(sketchNum); j < sketch.end.get(sketchNum)-1; j++)
 						g2.drawLine(sketch.sketch.get(j).x, sketch.sketch.get(j).y, sketch.sketch.get(j+1).x, sketch.sketch.get(j+1).y);
 
 					sketchNum++;
 				}
-				else if(memory.memory.get(i).getClass().getSimpleName().equals("Clear"))
-					g2.fill((Shape) memory.memory.get(i));
+				else if(undoTaker.mementos.get(i).getMemory().getClass().getSimpleName().equals("Clear"))
+					g2.fill((Shape) undoTaker.mementos.get(i).getMemory());
 				else
-					g2.draw((Shape)memory.memory.get(i));
+					g2.draw((Shape) undoTaker.mementos.get(i).getMemory());
 			}
 
 			g2.setColor(ColorFrame.color);
