@@ -29,8 +29,8 @@ import project.team.oodp.desktop.login.SuperLogInFactory;
 public class UserDesktop extends Desktop{
 	
 	
-	JPanel whole_panel, center_panel, bottom_panel, side_panel;
-	JButton window_btn, paint_btn,watch_btn;
+	public static JPanel whole_panel, center_panel, bottom_panel, side_panel;
+	public static JButton window_btn, paint_btn,clock_btn;
 	JLabel empty1, empty2, empty3, empty4, empty5, empty6;
 	JButton create_folder, delete_folder, create_file, delete_file;
 	
@@ -142,35 +142,12 @@ public class UserDesktop extends Desktop{
 		
 		//어플리케이션 생성하는 부분 
 		center_panel.setLayout(null);
-		JLabel paint_name = new JLabel("Paint");
-		paint_name.setBounds(100, 690, 80, 20);
-		center_panel.add(paint_name);
 		
-		paint_btn = new JButton();
-		paint_btn.setBackground(Color.white);
-		paint_btn.setBounds(80, 690, 80, 20);
-		center_panel.add(paint_btn);
+		ApplicationIcon makePaintIcon = new PaintIcon();
+		ApplicationIcon makeClockIcon = new ClockIcon();
+		makePaintIcon.makeApplicationIcon();
+		makeClockIcon.makeApplicationIcon();
 		
-		
-		
-		paint_btn.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				center_panel.setVisible(false);side_panel.setVisible(false);bottom_panel.setVisible(false);
-				Frame fram = new Frame();
-				fram.main(null);
-			}
-
-		});
-		
-		JLabel watch_name = new JLabel("Watch");
-		watch_name.setBounds(220, 690, 80, 20);
-		center_panel.add(watch_name);
-		
-		watch_btn = new JButton();
-		watch_btn.setBackground(Color.white);
-		watch_btn.setBounds(200, 690, 80, 20);
-		center_panel.add(watch_btn);
 		
 		
 		//폴더를 생성하는 부분 
