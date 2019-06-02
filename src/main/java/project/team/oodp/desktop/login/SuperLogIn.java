@@ -25,6 +25,7 @@ public class SuperLogIn extends LogIn{
 	private JButton signup_btn;
 	private JPasswordField pw_txt;
 	private JTextField id_txt;
+	public static String current_id;
 	
 	SuperLogIn(){
 		setTitle("Login");
@@ -132,6 +133,7 @@ public class SuperLogIn extends LogIn{
 			}*/
 		
 			if(id_txt.getText().equals(id))
+				current_id = id;
 				id_check = true;
 		}
 		

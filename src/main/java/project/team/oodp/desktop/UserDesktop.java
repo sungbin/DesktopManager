@@ -24,6 +24,8 @@ import project.team.oodp.desktop.clocks.SuperClock;
 import project.team.oodp.desktop.folderColor.FolderColor;
 import project.team.oodp.desktop.folderColor.RedFolder;
 import project.team.oodp.desktop.folderColor.YellowFolder;
+import project.team.oodp.desktop.login.SignUp;
+import project.team.oodp.desktop.login.SuperLogIn;
 import project.team.oodp.desktop.login.SuperLogInFactory;
 
 public class UserDesktop extends Desktop{
@@ -49,9 +51,12 @@ public class UserDesktop extends Desktop{
 		
 //		JFrame jf = new JFrame("Welcome to Desktop Manager :)");
 		
+		//superlogin에서 current_id 추가해주기 
+		FlyweightFactory factory = new FlyweightFactory();
+		String flyweight = factory.getFlyweight(SuperLogIn.current_id);
+		setTitle(flyweight);
 		
-//		jf.setLayout(new BorderLayout());
-		setTitle("Welcome to Desktop Manager :)");
+		
 		setSize(1000,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -125,7 +130,9 @@ public class UserDesktop extends Desktop{
 		create_folder.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				center_panel.setVisible(false);side_panel.setVisible(false);bottom_panel.setVisible(false);
+				center_panel.setVisible(false);
+				side_panel.setVisible(false);
+				bottom_panel.setVisible(false);
 				setTitle("Create Folder");
 				setSize(400, 200);
 				
