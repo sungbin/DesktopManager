@@ -5,18 +5,27 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
+import paints.Frame;
 import project.team.oodp.desktop.clocks.SuperClock;
 import project.team.oodp.desktop.folderColor.FolderColor;
 import project.team.oodp.desktop.folderColor.RedFolder;
 import project.team.oodp.desktop.folderColor.YellowFolder;
+import project.team.oodp.desktop.login.SignUp;
 import project.team.oodp.desktop.login.SuperLogIn;
 import project.team.oodp.desktop.login.SuperLogInFactory;
 
@@ -28,6 +37,7 @@ public class UserDesktop extends Desktop{
 	JLabel empty1, empty2, empty3, empty4, empty5, empty6;
 	JButton create_folder, delete_folder, create_file, delete_file;
 
+	//수정 
 	JButton[] folder_btn = new JButton[30];
 	static int number_of_folder = 0;
 	static ArrayList<String> folder_name = new ArrayList<String>();
@@ -123,6 +133,7 @@ public class UserDesktop extends Desktop{
 		add(center_panel, "Center");
 		add(bottom_panel, "South");
 
+
 		//수정 
 
 //폴터 생성
@@ -145,6 +156,8 @@ public class UserDesktop extends Desktop{
 			}
 
 		});
+
+		//어플리케이션 생성하는 부분 
 		center_panel.setLayout(null);
 
 		ApplicationIcon makePaintIcon = new PaintIcon();
@@ -153,6 +166,8 @@ public class UserDesktop extends Desktop{
 		makeClockIcon.makeApplicationIcon();
 
 
+
+		//폴더를 생성하는 부분 
 		FolderColor yellow = new YellowFolder();
 		FolderColor red = new RedFolder();
 
