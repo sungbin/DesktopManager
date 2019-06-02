@@ -1,5 +1,5 @@
 package project.team.oodp.desktop.login;
-
+//
 public class AccountListIterator implements Iterator{
 	private AccountList accountList;
 	private int index;

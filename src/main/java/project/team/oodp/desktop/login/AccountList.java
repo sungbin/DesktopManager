@@ -1,5 +1,5 @@
 package project.team.oodp.desktop.login;
-
+//
 public class AccountList implements Aggregate{
    
    private Account [] accounts;

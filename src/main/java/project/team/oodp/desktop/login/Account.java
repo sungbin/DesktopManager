@@ -1,5 +1,5 @@
 package project.team.oodp.desktop.login;
-
+//
 public class Account {
 	private String id;
 	private String password;
