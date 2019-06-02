@@ -55,7 +55,6 @@ public class UserDesktop extends Desktop{
 		}else {
 			icon = new ImageIcon(back2.setBackground());
 		}
-		count++;
 
 		//superlogin에서 current_id 추가해주기 
 		FlyweightFactory factory = new FlyweightFactory();
@@ -101,6 +100,7 @@ public class UserDesktop extends Desktop{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				count++;
 				new SuperLogInFactory().createLogIn();
 				dispose();
 			}
