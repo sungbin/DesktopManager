@@ -13,7 +13,7 @@ public class PaintIcon implements ApplicationIcon{
 
 	@Override
 	public void makeApplicationIcon() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		
 		UserDesktop.paint_btn = new JButton("Paint");
 		UserDesktop.paint_btn.setBackground(Color.white);

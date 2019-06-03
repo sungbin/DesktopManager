@@ -26,7 +26,7 @@ public class FileMaker extends Colleague{
 		folder_name_label.setBounds(120, 30, 80, 25);
 		folder_panel.add(folder_name_label);
 		
-		folder_name_txt = new JTextField(20);
+		folder_name_txt = new JTextField(20); 
 		folder_name_txt.setBounds(120, 70, 160, 25);
 		folder_panel.add(folder_name_txt);
 		

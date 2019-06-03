@@ -95,7 +95,7 @@ public class UserDesktop extends Desktop{
 		bottom_panel.setBackground(Color.GRAY);
 		bottom_panel.setSize(100,100);
 		bottom_panel.setLayout(new GridLayout(1,10));
-		window_btn = new JButton("Start");
+		window_btn = new JButton("Log out");
 		window_btn.addActionListener(new ActionListener(){
 
 			@Override
@@ -220,7 +220,7 @@ public class UserDesktop extends Desktop{
 				}
 			}
 		}
-
+ 
 //폴더 삭제 
 		delete_folder.addActionListener(new ActionListener() {
 

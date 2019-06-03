@@ -4,6 +4,7 @@ package paints;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import paints.recallers.memories.RedoCareTaker;
 import paints.recallers.memories.UndoCareTaker;
 import paints.recallers.memories.factories.UndoMemory;
+import project.team.oodp.desktop.UserDesktop;
 
 public class CheckFrame extends JFrame implements ActionListener {
 	private JLabel message = new JLabel("         이 캔버스를 정말로 삭제하시겠습니까?");
@@ -32,7 +34,7 @@ public class CheckFrame extends JFrame implements ActionListener {
 		no.addActionListener(this);
 
 		add("North", message);
-		add("West", yes);
+		add("West", yes); 
 		add("East", no);
 
 		setVisible(true);

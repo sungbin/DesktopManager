@@ -49,7 +49,7 @@ public class Canvas extends JPanel {
 	class MyMouseListener extends MouseAdapter {
 
 		public void mousePressed(MouseEvent e) {
-
+ 
 			if(Buttons.erase == true || Buttons.drawbuttons[0].getOn() == true) {
 				ColorFrame.colorChange = false;
 				start = e.getPoint();

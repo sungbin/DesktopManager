@@ -18,7 +18,7 @@ public class SuperClock extends JLabel implements ActionListener{
 	public SuperClock(){
 		setForeground(Color.black);
 	    setVisible(true);
-	    
+	     
 	    sdf = new SimpleDateFormat("hh:mm:ss \n yyyy MM d");
         setFont(new Font("sans-serif", Font.PLAIN, 12));
 	    
